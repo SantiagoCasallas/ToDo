@@ -15,16 +15,16 @@ namespace Proyecto1.Controller
 
             if (contenido != null)
             {
-                Console.WriteLine("\n--- Contenido actual de DB/datos.txt ---");
-                Console.WriteLine(string.IsNullOrEmpty(contenido) ? "(vacío)" : contenido);
+                View.Vista.print("\n--- Contenido actual de DB/datos.txt ---");
+                View.Vista.print(string.IsNullOrEmpty(contenido) ? "(vacío)" : contenido);
             }
             else
             {
-                Console.WriteLine("❌ No se pudo leer el archivo. Error:");
-                Console.WriteLine(leerErr);
+                View.Vista.print("No se pudo leer el archivo. Error:");
+                View.Vista.print(leerErr);
             }
 
-            Console.WriteLine("\nPresiona una tecla para salir...");
+            View.Vista.print("\nPresiona una tecla para salir...");
             Console.ReadKey();
         }
         public static int ObtenerUltimoId()
@@ -32,7 +32,7 @@ namespace Proyecto1.Controller
             string contenido = FileHelper.LeerTodo(out string error);
 
             if (string.IsNullOrWhiteSpace(contenido))
-                return 0; // Si el archivo está vacío
+                return 0; // retorna id=0 si el archivo está vacío
 
             try
             {
@@ -43,10 +43,9 @@ namespace Proyecto1.Controller
                 string ultimaLinea = lineas.Last().Trim();
 
                 // Formato esperado: "Id, descripcion;"
-                // Ej: "3, hacer mercado;"
                 string[] partes = ultimaLinea.Split(',');
 
-                // partes[0] debe ser el Id → Ej: "3"
+                // partes[0]:Id
                 int ultimoId = int.Parse(partes[0].Trim());
                 return ultimoId;
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Proyecto1.Controller;
 using Proyecto1.Modelo;
+using Proyecto1.View;
 
 namespace Proyecto1
 {
@@ -13,6 +14,7 @@ namespace Proyecto1
             // Tarea t1 = new Tarea(233, "barrer");
             // Controller.Registro.Registrar(t1);
 
+
             Menu menu = new Menu();
             bool running = true;
 
@@ -23,14 +25,14 @@ namespace Proyecto1
                 string entrada = Console.ReadLine();
                 if (!int.TryParse(entrada, out int op))
                 {
-                    Console.WriteLine("Entrada inválida. Por favor ingrese un número.");
+                    View.Vista.print("Entrada inválida. Por favor ingrese un número.");
                     continue;
                 }
 
                 running = menu.ProcesarOpcion(op);
             }
 
-            Console.WriteLine("Programa finalizado. Presione una tecla para salir...");
+            View.Vista.print("Programa finalizado. Presione una tecla para salir...");
             Console.ReadKey();
         }
     }

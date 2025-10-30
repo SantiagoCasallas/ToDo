@@ -59,5 +59,23 @@ namespace Proyecto1.Controller
                 return null;
             }
         }
+        public static bool EscribirTodo(string texto, out string error)
+        {
+            error = null;
+            try
+            {
+                if (!Directory.Exists(carp))
+                    Directory.CreateDirectory(carp);
+
+                File.WriteAllText(RutaArchivo, texto);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                return false;
+            }
+        }
+
     }
 }

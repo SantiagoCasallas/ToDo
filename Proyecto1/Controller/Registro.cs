@@ -9,10 +9,9 @@ namespace Proyecto1.Controller
 {
     internal class Registro
     {
-
         public static void Registrar(Tarea t)
         {
-            Console.WriteLine("Escribe un texto para guardar en DB/datos.txt:");
+            View.Vista.print("Escribe un texto para guardar en DB/datos.txt:");
             string entrada = t.getTarea();
 
             bool ok = FileHelper.EscribirEnTxt(entrada, out string error);
@@ -21,8 +20,8 @@ namespace Proyecto1.Controller
                 Console.WriteLine("Datos guardados correctamente.");
             else
             {
-                Console.WriteLine("No se pudo guardar el archivo. Error:");
-                Console.WriteLine(error);
+                View.Vista.print("No se pudo guardar el archivo. Error:");
+                View.Vista.print(error);
             }
 
 

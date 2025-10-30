@@ -1,3 +1,5 @@
-1, mercado
-2, comprar dulces
-3, barrer
+1, vender
+2, mirar
+3, as
+4, as
+5, dpos

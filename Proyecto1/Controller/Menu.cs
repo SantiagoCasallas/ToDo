@@ -9,12 +9,13 @@ namespace Proyecto1.Controller
         // Solo muestra el menú
         public void MostrarMenu()
         {
-            Console.WriteLine();
-            Console.WriteLine("----- Menú de Tareas -----");
-            Console.WriteLine("1. Agregar Tarea");
-            Console.WriteLine("2. Ver Tareas");
-            Console.WriteLine("3. Salir");
-            Console.Write("Seleccione una opción: ");
+            View.Vista.print(null);
+            View.Vista.print("----- Menú de Tareas -----");
+            View.Vista.print("1. Agregar Tarea");
+            View.Vista.print("2. Ver Tareas");
+            View.Vista.print("3. Eliminar tarea (id)");
+            View.Vista.print("4. Salir");
+            View.Vista.print("Seleccione una opción: ");
         }
 
         // Procesa la opción; devuelve true para seguir, false para salir
@@ -23,7 +24,7 @@ namespace Proyecto1.Controller
             switch (opcion)
             {
                 case 1:
-                    Console.Write("Ingrese la descripción de la tarea: ");
+                    View.Vista.print("Ingrese la descripción de la tarea: ");
                     string desc = Console.ReadLine();
 
                     int ultimoId = Leer.ObtenerUltimoId();
@@ -31,7 +32,7 @@ namespace Proyecto1.Controller
 
                     Controller.Registro.Registrar(new Modelo.Tarea(nuevoId, desc));
 
-                    Console.WriteLine($" Tarea guardada con ID {nuevoId}");
+                    View.Vista.print(" Tarea guardada con ID"+nuevoId);
                     return true;
 
                 case 2:
@@ -40,11 +41,25 @@ namespace Proyecto1.Controller
                     return true;
 
                 case 3:
-                    Console.WriteLine("Saliendo del programa...");
+                    View.Vista.print("Ingrese el ID de la tarea a eliminar:");
+                    int id;
+                    if (int.TryParse(Console.ReadLine(), out id))
+                    {
+                        Delete.EliminarID(id);
+                    }
+                    else
+                    {
+                        View.Vista.print("ID inválido.");
+                    }
+                    Console.ReadKey();
+                    return true;    
+                    break;
+                case 4:
+                    View.Vista.print("Saliendo del programa...");
                     return false;
 
                 default:
-                    Console.WriteLine("Opción no válida. Intente de nuevo.");
+                    View.Vista.print("Opción no válida. Intente de nuevo.");
                     return true;
             }
         }

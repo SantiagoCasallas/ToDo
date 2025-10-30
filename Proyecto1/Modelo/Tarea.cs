@@ -11,13 +11,11 @@
         {
             this.Id = id;
             this.Descripcion = descripcion;
-
-
         }
 
         public void mostrarTarea()
         {
-            Console.WriteLine("Tarea ID: " + Id + ", Descripcion: " + Descripcion);
+            View.Vista.print("Tarea ID: " + Id + ", Descripcion: " + Descripcion);
         }
 
         public String getTarea()

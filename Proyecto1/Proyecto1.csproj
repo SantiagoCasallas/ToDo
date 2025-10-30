@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="DB\" />
+    <Folder Include="Modelo\" />
   </ItemGroup>
 
 </Project>
