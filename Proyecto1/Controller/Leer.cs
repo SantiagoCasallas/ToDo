@@ -15,7 +15,7 @@ namespace Proyecto1.Controller
 
             if (contenido != null)
             {
-                View.Vista.print("\n--- Contenido actual de DB/datos.txt ---");
+                View.Vista.print("\n--- BD/datos.txt ---");
                 View.Vista.print(string.IsNullOrEmpty(contenido) ? "(vacío)" : contenido);
             }
             else

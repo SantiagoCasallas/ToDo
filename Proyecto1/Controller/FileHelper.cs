@@ -7,7 +7,12 @@ namespace Proyecto1.Controller
     {
         // Ruta absoluta de la carpeta DB (al lado del ejecutable)
 
-        public static String carp = "C:\\Users\\santi\\source\\repos\\Proyecto1\\Proyecto1\\DB\\";
+        //public static String carp = "C:\\Users\\santi\\source\\repos\\Proyecto1\\Proyecto1\\DB\\";
+
+        public static string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        public static string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.Parent.FullName;
+        public static string carp = Path.Combine(projectDirectory, "DB");
+
 
         private static string RutaArchivo =>
             Path.Combine(carp, "Tareas.txt");
@@ -43,6 +48,11 @@ namespace Proyecto1.Controller
         // Lee todo el contenido del archivo. Devuelve null si hay error (mensaje en out).
         public static string LeerTodo(out string mensajeError)
         {
+            View.Vista.print("Leyendo archivo en carp: " + carp);         
+            
+            
+            
+
             mensajeError = null;
             try
             {

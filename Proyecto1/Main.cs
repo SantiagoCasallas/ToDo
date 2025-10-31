@@ -1,7 +1,9 @@
-﻿using System;
-using Proyecto1.Controller;
+﻿using Proyecto1.Controller;
 using Proyecto1.Modelo;
 using Proyecto1.View;
+using System;
+using System.IO; // Es necesario incluir el espacio de nombres
+
 
 namespace Proyecto1
 {
@@ -14,13 +16,15 @@ namespace Proyecto1
             // Tarea t1 = new Tarea(233, "barrer");
             // Controller.Registro.Registrar(t1);
 
-
             Menu menu = new Menu();
+
+
             bool running = true;
 
             while (running)
             {
                 menu.MostrarMenu();
+
 
                 string entrada = Console.ReadLine();
                 if (!int.TryParse(entrada, out int op))
@@ -28,6 +32,8 @@ namespace Proyecto1
                     View.Vista.print("Entrada inválida. Por favor ingrese un número.");
                     continue;
                 }
+
+
 
                 running = menu.ProcesarOpcion(op);
             }

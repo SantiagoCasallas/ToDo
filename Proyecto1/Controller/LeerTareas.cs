@@ -8,17 +8,18 @@ namespace Proyecto1.Controller
     public class LeerTareas
     {
 
-        public static String carp = "C:\\Users\\santi\\source\\repos\\Proyecto1\\Proyecto1\\DB\\";
+        //public static String carp = "C:\\Users\\santi\\source\\repos\\Proyecto1\\Proyecto1\\DB\\";
+        public static String carp = FileHelper.carp;
 
         private static string rutaArchivo =>
             Path.Combine(carp, "Tareas.txt");
         public LeerTareas()
         {
             // Ruta relativa carpeta DB
+            View.Vista.print("Ruta de la carpeta DB: " + carp);
 
-
-        // Si no existe la carpeta, la crea
-        Directory.CreateDirectory(Path.GetDirectoryName(rutaArchivo));
+            // Si no existe la carpeta, la crea
+            Directory.CreateDirectory(Path.GetDirectoryName(rutaArchivo));
 
             // Si no existe el archivo, lo crea vacío
             if (!File.Exists(rutaArchivo))

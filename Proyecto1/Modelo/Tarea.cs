@@ -4,9 +4,9 @@
     public class Tarea
 
     {
-        int Id { get; set; }
-        String Descripcion { get; set; }
-        String Estado { get; set; }
+        public int Id { get; set; }
+        public String Descripcion { get; set; }
+        public String Estado { get; set; }
         public Tarea(int id, String descripcion, String estado)
         {
             this.Id = id;

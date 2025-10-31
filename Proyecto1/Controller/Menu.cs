@@ -5,10 +5,11 @@ namespace Proyecto1.Controller
     internal class Menu
     {
         public Menu() { }
-
+        String ruta;
         // Solo muestra el menú
-        public void MostrarMenu()
+        public void MostrarMenu( )
         {
+            this.ruta = ruta;
             View.Vista.print(null);
             View.Vista.print("----- Menú de Tareas -----");
             View.Vista.print("1. Agregar Tarea");
@@ -16,6 +17,7 @@ namespace Proyecto1.Controller
             View.Vista.print("3. Eliminar tarea (id)");
             View.Vista.print("4. Salir");
             View.Vista.print("5. prueba objeto");
+            View.Vista.print("6. borrar objeto");
             View.Vista.print("Seleccione una opción: ");
         }
 
@@ -71,18 +73,17 @@ namespace Proyecto1.Controller
                     Console.ReadKey();
                     return true;
                 case 6:
-                    // Opción de deleteobjeto
-                    View.Vista.print("Ingrese el ID de la tarea a eliminar (DeleteObjeto):");
-                    int idEliminar;
-                    if (int.TryParse(Console.ReadLine(), out idEliminar))
+                    View.Vista.print("Ingrese el ID de la tarea a eliminar:");
+                    if (int.TryParse(Console.ReadLine(), out int idEliminar))
                     {
-                        DeleteObjeto.EliminarPorId(idEliminar);
+                        DeleteTareaObjeto.EliminarPorId(idEliminar);
                     }
                     else
                     {
                         View.Vista.print("ID inválido.");
                     }
                     return true;
+                    break;
                 default:
                     View.Vista.print("Opción no válida. Intente de nuevo.");
                     return true;
