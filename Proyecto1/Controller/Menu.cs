@@ -15,6 +15,7 @@ namespace Proyecto1.Controller
             View.Vista.print("2. Ver Tareas");
             View.Vista.print("3. Eliminar tarea (id)");
             View.Vista.print("4. Salir");
+            View.Vista.print("5. prueba objeto");
             View.Vista.print("Seleccione una opción: ");
         }
 
@@ -26,13 +27,15 @@ namespace Proyecto1.Controller
                 case 1:
                     View.Vista.print("Ingrese la descripción de la tarea: ");
                     string desc = Console.ReadLine();
+                    string estado = Console.ReadLine();
+
 
                     int ultimoId = Leer.ObtenerUltimoId();
                     int nuevoId = ultimoId + 1;
 
-                    Controller.Registro.Registrar(new Modelo.Tarea(nuevoId, desc));
+                    Controller.Registro.Registrar(new Modelo.Tarea(nuevoId, desc, estado));
 
-                    View.Vista.print(" Tarea guardada con ID"+nuevoId);
+                    View.Vista.print(" Tarea guardada con ID " + nuevoId);
                     return true;
 
                 case 2:
@@ -52,12 +55,34 @@ namespace Proyecto1.Controller
                         View.Vista.print("ID inválido.");
                     }
                     Console.ReadKey();
-                    return true;    
+                    return true;
                     break;
                 case 4:
                     View.Vista.print("Saliendo del programa...");
                     return false;
 
+                case 5: //prueba leer tareas objeto
+                    LeerTareas lt = new LeerTareas();
+                    var lista = lt.LeerTareasObjeto();
+                    foreach (var tarea in lista)
+                    {
+                        tarea.mostrarTarea();
+                    }
+                    Console.ReadKey();
+                    return true;
+                case 6:
+                    // Opción de deleteobjeto
+                    View.Vista.print("Ingrese el ID de la tarea a eliminar (DeleteObjeto):");
+                    int idEliminar;
+                    if (int.TryParse(Console.ReadLine(), out idEliminar))
+                    {
+                        DeleteObjeto.EliminarPorId(idEliminar);
+                    }
+                    else
+                    {
+                        View.Vista.print("ID inválido.");
+                    }
+                    return true;
                 default:
                     View.Vista.print("Opción no válida. Intente de nuevo.");
                     return true;
