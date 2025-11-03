@@ -13,11 +13,9 @@ namespace Proyecto1.Controller
             View.Vista.print(null);
             View.Vista.print("----- Menú de Tareas -----");
             View.Vista.print("1. Agregar Tarea");
-            View.Vista.print("2. Ver Tareas");
-            View.Vista.print("3. Eliminar tarea (id)");
+            View.Vista.print("2. Leer tareas ");
+            View.Vista.print("3. Borrar tarea");
             View.Vista.print("4. Salir");
-            View.Vista.print("5. prueba objeto");
-            View.Vista.print("6. borrar objeto");
             View.Vista.print("Seleccione una opción: ");
         }
 
@@ -28,11 +26,11 @@ namespace Proyecto1.Controller
             {
                 case 1:
                     View.Vista.print("Ingrese la descripción de la tarea: ");
-                    string desc = Console.ReadLine();
-                    string estado = Console.ReadLine();
+                    string desc = Controller.Capturar.capturar();
+                    string estado = Controller.Capturar.capturar();
 
 
-                    int ultimoId = Leer.ObtenerUltimoId();
+                    int ultimoId = new LeerTareas().ObtenerUltimoId();
                     int nuevoId = ultimoId + 1;
 
                     Controller.Registro.Registrar(new Modelo.Tarea(nuevoId, desc, estado));
@@ -40,30 +38,11 @@ namespace Proyecto1.Controller
                     View.Vista.print(" Tarea guardada con ID " + nuevoId);
                     return true;
 
-                case 2:
-                    // Lógica para ver tareas
-                    Controller.Leer.LeerTareas();
-                    return true;
-
-                case 3:
-                    View.Vista.print("Ingrese el ID de la tarea a eliminar:");
-                    int id;
-                    if (int.TryParse(Console.ReadLine(), out id))
-                    {
-                        Delete.EliminarID(id);
-                    }
-                    else
-                    {
-                        View.Vista.print("ID inválido.");
-                    }
-                    Console.ReadKey();
-                    return true;
-                    break;
                 case 4:
                     View.Vista.print("Saliendo del programa...");
                     return false;
 
-                case 5: //prueba leer tareas objeto
+                case 2: //prueba leer tareas objeto
                     LeerTareas lt = new LeerTareas();
                     var lista = lt.LeerTareasObjeto();
                     foreach (var tarea in lista)
@@ -72,9 +51,9 @@ namespace Proyecto1.Controller
                     }
                     Console.ReadKey();
                     return true;
-                case 6:
+                case 3:
                     View.Vista.print("Ingrese el ID de la tarea a eliminar:");
-                    if (int.TryParse(Console.ReadLine(), out int idEliminar))
+                    if (int.TryParse(Controller.Capturar.capturar(), out int idEliminar))
                     {
                         DeleteTareaObjeto.EliminarPorId(idEliminar);
                     }

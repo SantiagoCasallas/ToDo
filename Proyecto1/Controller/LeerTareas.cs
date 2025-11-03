@@ -55,5 +55,14 @@ namespace Proyecto1.Controller
 
             return listaTareas;
         }
+        public int ObtenerUltimoId()
+        {
+            var tareas = LeerTareasObjeto();
+
+            if (tareas == null || tareas.Count == 0)
+                return 0;
+
+            return tareas.Max(t => t.Id);
+        }
     }
 }

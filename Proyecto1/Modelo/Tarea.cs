@@ -23,7 +23,7 @@
 
         public void mostrarTarea()
         {
-            View.Vista.print("Tarea ID: " + Id + ", Descripcion: " + Descripcion+ ", "+Estado);
+            View.Vista.print("Tarea ID: " + Id + ", Descripcion: " + Descripcion+ ", Estado: "+Estado);
         }
 
         public String getTarea()

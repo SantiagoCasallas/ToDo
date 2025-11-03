@@ -1,1 +1,4 @@
-1, mein, mio;;
+1, mein, incolpeto;
+2, ir a la u, incompleto
+3, lavar la moto, listo
+4, mimir, Pendiente

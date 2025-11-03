@@ -11,29 +11,20 @@ namespace Proyecto1
     {
         public static void Main(string[] args)
         {
-            // Ejemplos (si los necesitas)
-            // Tarea t = new Tarea(1, "estudiar");
-            // Tarea t1 = new Tarea(233, "barrer");
-            // Controller.Registro.Registrar(t1);
-
             Menu menu = new Menu();
-
-
-            bool running = true;
+            View.Vista.print(Char.GetNumericValue('A').ToString());         
+                bool running = true;
 
             while (running)
             {
                 menu.MostrarMenu();
 
-
-                string entrada = Console.ReadLine();
+                string entrada = Controller.Capturar.capturar();
                 if (!int.TryParse(entrada, out int op))
                 {
                     View.Vista.print("Entrada inválida. Por favor ingrese un número.");
                     continue;
                 }
-
-
 
                 running = menu.ProcesarOpcion(op);
             }
